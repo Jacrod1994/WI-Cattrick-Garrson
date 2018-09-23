@@ -1,0 +1,170 @@
+<html>
+
+<head>
+
+	<center><link rel="stylesheet" type="text/css" href="css/styel.css"/><center/>  
+
+	<center><link rel="stylesheet" type="text/css" href="css/jquery.ad-gallery.css" /><center/>    
+    
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="js/jquery.ad-gallery.js?rand=586"></script>
+
+<script type="text/javascript">
+
+$(function() {
+ $('img.image1').data('ad-desc', 'hi there ');
+    $('img.image1').data('ad-title', 'Title through $.data');
+    $('img.image4').data('ad-desc', 'This image is wider than the wrapper, so it has been scaled down');
+    $('img.image5').data('ad-desc', 'This image is higher than the wrapper, so it has been scaled down');
+
+    var galleries = $('.ad-gallery').adGallery();
+    $('#switch-effect').change(
+      function() {
+        galleries[0].settings.effect = $(this).val();
+        return false;
+      }
+    );
+    $('#toggle-slideshow').click(
+      function() {
+        galleries[0].slideshow.toggle();
+        return false;
+      }
+    );
+    galleries[0].addAnimation('wild',
+      function(img_container, direction, desc) {
+        var current_left = parseInt(img_container.css('left'), 10);
+        var current_top = parseInt(img_container.css('top'), 10);
+        if(direction == 'left') {
+          var old_image_left = '-'+ this.image_wrapper_width +'px';
+          img_container.css('left',this.image_wrapper_width +'px');
+          var old_image_top = '-'+ this.image_wrapper_height +'px';
+          img_container.css('top', this.image_wrapper_height +'px');
+        } else {
+          var old_image_left = this.image_wrapper_width +'px';
+          img_container.css('left','-'+ this.image_wrapper_width +'px');
+          var old_image_top = this.image_wrapper_height +'px';
+          img_container.css('top', '-'+ this.image_wrapper_height +'px');
+        };
+        if(desc) {
+          desc.css('bottom', '-'+ desc[0].offsetHeight +'px');
+          desc.animate({bottom: 0}, this.settings.animation_speed * 2);
+        };
+        img_container.css('opacity', 0);
+        return {old_image: {left: old_image_left, top: old_image_top, opacity: 0},
+                new_image: {left: current_left, top: current_top, opacity: 1},
+                easing: 'easeInBounce',
+                speed: 2500};
+      }
+    );
+  });
+  function debug(str) {
+    if(window.console && window.console.log && jQuery.browser.mozilla) {
+      console.log(str);
+    } else {
+      $('#debug').show().val($('#debug').val() + str +'\n');
+    }
+  }
+  </script>
+  <style type="text/css">
+  #gallery {
+    padding: 30px;
+    background: #e1eef5;
+  }
+  #comment-form {
+    width: 100%;
+  }
+  #error {
+    display: none;
+    background: #FFF;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 500px;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid #CCC;
+  }
+  </style>
+  <title>Gallery Page</title>
+</head>
+
+
+<body>
+
+
+<div id="container"> 
+
+	<div id="banner">    
+	</div>
+
+    	<div id="nav">
+		<ul>
+		<li><a href="index.htm">Home Page</a></li>
+		<li><a href="activites.htm">Activites</a></li>
+		<li><a href="gallery.htm">Gallery</a></li>
+		<li><a href="aboutus.htm">About us</a></li>
+		<li><a href="contactus.htm">Contact us</a></li>
+
+		</ul>
+
+	</div>
+
+	
+
+     	<div id="main">
+<center><div id="gallery" class="ad-gallery">
+      <div class="ad-image-wrapper">
+      </div>
+      <div class="ad-controls">
+      </div>
+      <div class="ad-nav">
+        <div class="ad-thumbs">
+          <ul class="ad-thumb-list">
+                        <li>
+              <a href="photos/photo1.jpg">
+                <img src="photos/thumbs/photo1thumb.jpg" title="A cupper and a chat">
+              </a>
+            </li>
+
+               <li>
+              <a href="photos/photo2.jpg">
+                <img src="photos/thumbs/photo2thumb.jpg" title="Making Beaded Angels">
+              </a>
+            </li>           
+  <li>
+              <a href="photos/photo3.jpg">
+                <img src="photos/thumbs/photo3thumb.jpg" title="Heather talks about rag rugs">
+              </a>
+            </li>
+  <li>
+              <a href="photos/photo4.jpg">
+                <img src="photos/thumbs/photo4thumb.jpg" title="Completed Angels">
+              </a>
+            </li>
+  <li>
+              <a href="photos/1.jpg">
+                <img src="photos/thumbs/t1.jpg" title="A title for 1.jpg">
+              </a>
+            </li>
+                      </ul>
+        </div>
+
+  </div><center/>
+
+</div>
+
+
+
+		<div id="mainleft">
+		</div>
+	</div>
+
+	<div id="footer">
+<p><center>All work Copyright ©1999 by Jacob Grindrod and the WI<center/><p/>
+	</div>
+
+</div>
+
+</body>
+</html>

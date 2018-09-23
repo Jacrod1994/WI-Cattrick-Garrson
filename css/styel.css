@@ -1,0 +1,78 @@
+body{
+background-image:url('../images/background.png');
+background-attachment:;
+}
+
+#container
+{
+width:900px;
+background-color:
+}
+
+#banner{
+width:900px;
+height:150px;
+background-image:url('../images/wibanner.png');
+background-color:
+}
+
+
+#nav{
+height:40px;
+width:900px;
+margin:5px auto;
+}
+
+
+#nav ul
+{
+list-style-type:none;
+margin:5px auto;
+padding:3px auto; 
+overflow:hidden;
+}
+
+#nav li
+{
+float:left;
+}
+
+#nav li a:link,a:visited
+{
+display:block;
+height: 20px;
+line-height: 20px;
+float: left;
+width:10em;
+font-weight:bold;
+color:#FFFFFF;
+background-color:#98bf21;
+text-align:center;
+padding:9px auto;
+text-decoration: none;
+text-transform:uppercase;
+}
+
+#nav a:hover,a:active
+{
+background-color:#FFFF00;
+}
+
+
+#main{
+width:900px;
+height:700px;
+background-color:#00CC99;
+margin:10px auto;
+padding:15px;
+text-align: left;
+}
+
+
+#footer{
+width:900px;
+height:50px;
+margin:5px auto;
+padding:30px;
+background-color:#008B00;
+}
